@@ -17,7 +17,7 @@ ENV JAVA_HOME='/usr/lib/jvm/java-11-openjdk' \
     SQ_EXTENSIONS_DIR="/opt/sonarqube/extensions" \
     SQ_LOGS_DIR="/opt/sonarqube/logs" \
     SQ_TEMP_DIR="/opt/sonarqube/temp" \
-    SQ_CONF_DIR="/opts/sonarqube/conf"
+    SQ_CONF_DIR="/opt/sonarqube/conf"
 
 RUN set -eux; \
     addgroup -S -g 1000 sonarqube; \
