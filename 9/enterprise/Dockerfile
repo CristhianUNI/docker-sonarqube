@@ -17,7 +17,10 @@ ENV JAVA_HOME='/usr/lib/jvm/java-11-openjdk' \
     SQ_EXTENSIONS_DIR="/opt/sonarqube/extensions" \
     SQ_LOGS_DIR="/opt/sonarqube/logs" \
     SQ_TEMP_DIR="/opt/sonarqube/temp" \
-    SQ_CONF_DIR="/opt/sonarqube/conf"
+    SONAR_JDBC_USERNAME="sonar" \
+    SONAR_JDBC_PASSWORD="admin_postgres" \
+    SONAR_JDBC_URL="jdbc:postgresql://10.128.2.50:5432/sonarqube"
+
 
 RUN set -eux; \
     addgroup -S -g 1000 sonarqube; \
@@ -45,7 +48,7 @@ RUN set -eux; \
     rm -rf ${SONARQUBE_HOME}/bin/*; \
     chown -R sonarqube:sonarqube ${SONARQUBE_HOME}; \
     # this 777 will be replaced by 700 at runtime (allows semi-arbitrary "--user" values)
-    chmod -R 777 "${SQ_DATA_DIR}" "${SQ_EXTENSIONS_DIR}" "${SQ_LOGS_DIR}" "${SQ_TEMP_DIR}" "${SQ_CONF_DIR}"; \
+    chmod -R 777 "${SQ_DATA_DIR}" "${SQ_EXTENSIONS_DIR}" "${SQ_LOGS_DIR}" "${SQ_TEMP_DIR}"; \
     apk del --purge build-dependencies;
     
 COPY --chown=sonarqube:sonarqube run.sh sonar.sh ${SONARQUBE_HOME}/bin/
