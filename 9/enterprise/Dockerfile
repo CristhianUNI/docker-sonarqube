@@ -19,7 +19,7 @@ ENV JAVA_HOME='/usr/lib/jvm/java-11-openjdk' \
     SQ_TEMP_DIR="/opt/sonarqube/temp" \
     SONAR_JDBC_USERNAME="sonardev" \
     SONAR_JDBC_PASSWORD="sonar-dev-devops" \
-    SONAR_JDBC_URL="jdbc:postgresql://172.30.32.125:5432/bd_sonarquebe_dev?currentSchema=schema_migrations_dev"
+    SONAR_JDBC_URL="jdbc:postgresql://postgres.devops.svc.cluster.local:5432/bd_sonarquebe_dev?currentSchema=schema_migrations_dev"
 
 
 RUN set -eux; \
